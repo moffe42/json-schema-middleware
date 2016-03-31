@@ -1,6 +1,7 @@
 {
-    "name": "cbx/json-validator",
-    "description": "PSR-7 Middleware for Slim 3 3 3 the enables validation of JSON posted to en endpoint",
+    "name": "jach/json-schema-middleware",
+    "description": "PSR-7 Middleware for Slim 3 the enables validation of JSON posted to en endpoint",
+    "keywords": ["slim","json","schema","validation"],
     "type": "library",
     "require": {
         "justinrainbow/json-schema": "^1.6",
@@ -30,5 +31,8 @@
         "psr-4": {
             "Jach\\Json\\Test\\": "tests/"
         }
+    },
+    "conflict": {
+        "slim/slim": "<3.0"
     }
 }

@@ -20,6 +20,7 @@ class RouteValidator
         try {
             $this->jsonValidator->validate((string)$request->getBody());
         } catch (SchemaException $e) {
+            $response->getBody()->write(json_encode(['message' => $e->getMessage(), 'hint' => $e->getHint()]));
             return $response->withStatus(400, 'Invalid JSON');
         }
 

@@ -59,7 +59,7 @@ class RouteValidatorTest extends \PHPUnit_Framework_TestCase
         $jsonValidator->expects($this->once())
             ->method('validate')
             ->with('{"json":"data"}')
-            ->will($this->throwException(new SchemaException('JSON did not validate')));
+            ->will($this->throwException(new SchemaException('JSON did not validate', 'A hint')));
 
         $routevalidator = new RouteValidator($jsonValidator);
         $wasCalled = false;
@@ -69,6 +69,7 @@ class RouteValidatorTest extends \PHPUnit_Framework_TestCase
         });
 
         $this->assertEquals(400, $response->getStatusCode());
+        $this->assertEquals('{"message":"JSON did not validate","hint":"A hint"}', $response->getBody());
         $this->assertFalse($wasCalled);
     }
 }
